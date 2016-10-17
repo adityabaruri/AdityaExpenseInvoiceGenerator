@@ -1,0 +1,35 @@
+<apex:page standardController="Expense__c" renderAs="pdf"  extensions="PrintPdf" >
+  <!--Page for PDF generation-->
+  <h1 style="color:#229562; text-align: center;">REIMBURSEMENT INVOICE</h1>
+  <hr/>
+  <p style="font:20px;">Expense for {!Expense__c.Name} on {!Expense__c.Date__c}</p>
+      <html>
+          <head/>
+            <body>
+                <table width="600px" Class="center" >
+                   
+                        <td>TOTAL AMOUNT:</td>
+                        <td>{!Expense__c.Total_Expense__c}</td><br/>
+
+                        <td>EVENT DATE:</td>
+                        <td>{!Expense__c.Date__c} </td><br/>
+                  
+                        <td>EVENT:</td>
+                        <td>{!Expense__c.Name}</td><br/>
+                        
+                        <td>CONTRIBUTED AMOUNT:</td>
+                        <td>{!Expense__c.Updated_Contributed_Amount__c}</td><br/>
+                      
+                </table> 
+                
+                <!--Fields to be displayed in the PDF-->
+                    <apex:repeat value="{!listMembers}" var="i">
+                            {!i.Member_Expense__r.Name}:
+                            {!i.Contributed_Amount__c}
+                            <br/>
+                    </apex:repeat>    
+            </body>
+        </html>
+  
+
+</apex:page>

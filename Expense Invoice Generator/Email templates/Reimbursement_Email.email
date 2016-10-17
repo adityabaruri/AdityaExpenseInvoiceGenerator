@@ -1,0 +1,27 @@
+<messaging:emailTemplate subject="REIMBURSEMENT" recipientType="User" relatedToType="Exp_Member__c">
+    <messaging:plainTextEmailBody >
+            Hi, {!relatedTo.Member_Expense__r.Name}
+            This is to inform you that you reimbursement of Rs.{!relatedTo.Contributed_Amount__c} for {!relatedTo.Expense_member__r.Name}. 
+            
+            Thanks and Regards 
+            OIT Systems Ltd 
+            
+    </messaging:plainTextEmailBody>       
+        <messaging:attachment renderAs="PDF" filename="Reimbursement.pdf">
+            <html>
+                <head/>
+                <body>
+                    <td>Name:</td>
+                    <td>{!relatedTo.Member_Expense__r.Name}</td><br/>
+                    
+                    <td>Event:</td>
+                    <td>{!relatedTo.Expense_member__r.Name}</td><br/>
+                    
+                    <td>Contribution Amount:</td>
+                    <td>{!relatedTo.Contributed_Amount__c}</td><br/>
+
+                
+                </body>
+            </html>
+        </messaging:attachment>
+</messaging:emailTemplate>

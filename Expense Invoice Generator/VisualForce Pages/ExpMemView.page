@@ -1,0 +1,25 @@
+<apex:page Controller="ExpMemView" action="{!fetchRecord}" docType="HTML-5.0">
+  <apex:pageBlock title="List of Members">
+   <apex:pageBlockSection > 
+   <tr>
+       <th>ID</th>
+       <th>Name</th>
+       <th>Expense</th>
+       <th>Member</th>
+       <th>Email</th>
+       <th>Contributed Amount</th>
+   </tr>
+    <apex:repeat value="{!listMembers}" var="i">
+      <tr> <td> {!i.Id} </td>
+      <td>{!i.Name} </td>
+      <td>{!i.Expense_member__r.Name}</td>
+      <td> {!i.Member_Expense__r.Name} </td>
+      <td>{!i.Email_member__c}</td>
+      <td>{!i.Contributed_Amount__c }</td></tr>;
+    <br/> 
+    </apex:repeat>
+    
+    </apex:pageBlockSection>
+
+  </apex:pageBlock>
+</apex:page>
